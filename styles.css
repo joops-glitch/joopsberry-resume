@@ -1,16 +1,18 @@
 :root {
-  --bg: #f7f8fa;
+  --bg: #f5f7fa;
   --surface: #ffffff;
-  --surface-alt: #f1f4f8;
-  --text: #1e2933;
-  --muted: #5b6773;
-  --border: #d8dee6;
+  --surface-soft: #f8fafc;
+  --surface-tint: #eef3f8;
+  --text: #142235;
+  --muted: #53657d;
+  --border: #d6dee8;
+  --border-strong: #c5d0dd;
   --accent: #1f5fae;
-  --accent-dark: #15457f;
-  --max-width: 1040px;
-  --narrow-width: 760px;
-  --radius: 14px;
-  --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --accent-soft: #dbe8f8;
+  --accent-dark: #174985;
+  --max-width: 1100px;
+  --narrow-width: 820px;
+  --radius: 10px;
 }
 
 *,
@@ -57,8 +59,8 @@ a:hover {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background: rgba(247, 248, 250, 0.94);
+  z-index: 20;
+  background: rgba(245, 247, 250, 0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -93,9 +95,9 @@ a:hover {
 }
 
 .hero {
-  padding: 5.5rem 0 4rem;
+  padding: 5.25rem 0 4rem;
   background:
-    linear-gradient(to bottom, rgba(31, 95, 174, 0.06), rgba(31, 95, 174, 0)),
+    linear-gradient(to bottom, rgba(31, 95, 174, 0.05), rgba(31, 95, 174, 0)),
     var(--bg);
 }
 
@@ -112,24 +114,24 @@ h1,
 h2,
 h3 {
   margin-top: 0;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 h1 {
-  max-width: 14ch;
-  margin-bottom: 1rem;
-  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  max-width: 16ch;
+  margin: 0 0 1.25rem;
+  font-size: clamp(3rem, 6vw, 5.15rem);
 }
 
 h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  margin-bottom: 0.6rem;
 }
 
 h3 {
   font-size: 1.15rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.55rem;
 }
 
 .intro,
@@ -138,12 +140,12 @@ h3 {
 .project p,
 .panel p,
 .tag-list span,
-footer p {
+.site-footer p {
   color: var(--muted);
 }
 
 .intro {
-  max-width: 780px;
+  max-width: 830px;
   font-size: 1.08rem;
   margin: 0;
 }
@@ -152,19 +154,18 @@ footer p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  margin-top: 1.75rem;
+  margin-top: 1.8rem;
 }
 
 .button {
   display: inline-block;
   padding: 0.82rem 1.15rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   border-radius: 999px;
   background: var(--surface);
   color: var(--text);
   font-weight: 700;
   text-decoration: none;
-  box-shadow: var(--shadow);
 }
 
 .button:hover {
@@ -187,7 +188,7 @@ footer p {
 }
 
 .section-tint {
-  background: var(--surface-alt);
+  background: var(--surface-tint);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -214,21 +215,48 @@ footer p {
 }
 
 .three-up {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.panel,
-.project {
-  background: var(--surface);
+/* Focus Areas: flatter informational boxes, less clickable */
+.panel {
+  background: rgba(255, 255, 255, 0.58);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.35rem;
-  box-shadow: var(--shadow);
+  padding: 1.25rem 1.35rem;
+  box-shadow: none;
 }
 
+.panel h3 {
+  margin-bottom: 0.7rem;
+}
+
+.panel p {
+  margin: 0;
+}
+
+/* Selected Work: list-style entries, not cards */
 .project-list {
   display: grid;
   gap: 1rem;
+}
+
+.project {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: none;
+}
+
+.project h3 {
+  margin-bottom: 0.55rem;
+}
+
+.project p {
+  margin: 0;
+  max-width: 95ch;
 }
 
 .tag-list {
@@ -244,7 +272,6 @@ footer p {
   border-radius: 999px;
   padding: 0.55rem 0.85rem;
   font-size: 0.95rem;
-  box-shadow: var(--shadow);
 }
 
 .site-footer {
@@ -273,5 +300,10 @@ footer p {
 
   .section {
     padding: 3.5rem 0;
+  }
+
+  h1 {
+    max-width: 14ch;
+    font-size: clamp(2.5rem, 10vw, 4rem);
   }
 }
